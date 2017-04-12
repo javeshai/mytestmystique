@@ -1,13 +1,11 @@
-dependencies:
-  override:
-    - npm install
-    - bundle install
-    - sudo pip install awscli
-   
-
 deployment:
- aws:
-  branch: master
-  commands:
-- aws s3 sync mydir/ s3://mytestmystique
-
+  development:
+    branch: development
+    commands:
+      - npm run build
+      - aws s3 sync sync mydir/ s3://mytestmystique
+  production:
+    branch: master
+    commands:
+      - npm run build
+      - aws s3 sync sync mydir/ s3://mytestmystique
