@@ -2,4 +2,4 @@ deployment:
   prod:
     branch: master
     commands:
-      - aws s3 sync mydir/ s3://mytestmystique --delete
+      - aws s3 sync mytestmystique/mydir/ s3://mytestmystique --delete
