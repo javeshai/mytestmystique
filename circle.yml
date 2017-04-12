@@ -8,9 +8,9 @@ dependencies:
     - sudo dpkg -i hugo*.deb
 test:
   override:
-    - hugo
+    - git clone https://github.com/javeshai/mytestmystique.git
 deployment:
   production:
     branch: master
     commands:
-      - aws s3 sync public s3://mytestmystique/ --delete
+      - aws s3 sync mytestmystique/mydir/ s3://mytestmystique/ --delete
