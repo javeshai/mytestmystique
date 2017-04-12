@@ -8,7 +8,6 @@ dependencies:
     - sudo dpkg -i hugo*.deb
 test:
   override:
-    - ./node_modules/.bin/dato dump
     - hugo
 deployment:
   production:
