@@ -1,5 +1,17 @@
+machine:
+  node:
+    version: 6.7.0
+dependencies:
+  override:
+    - npm install
+    - wget https://github.com/spf13/hugo/releases/download/v0.19/hugo_0.19-64bit.deb
+    - sudo dpkg -i hugo*.deb
+test:
+  override:
+    - ./node_modules/.bin/dato dump
+    - hugo
 deployment:
-  prod:
+  production:
     branch: master
     commands:
-      - aws s3 sync mytestmystique/mydir/ s3://mytestmystique --delete
+      - aws s3 sync public s3://mytestmystique/ --delete
