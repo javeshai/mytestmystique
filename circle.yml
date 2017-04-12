@@ -1,16 +1,14 @@
-machine:
-  node:
-    version: 6.7.0
 dependencies:
-  override:
-    - npm install
-    - wget https://github.com/spf13/hugo/releases/download/v0.19/hugo_0.19-64bit.deb
-    - sudo dpkg -i hugo*.deb
+  pre:
+    - go get -v github.com/spf13/hugo
+    - pip install awscli
+
 test:
   override:
-    - git clone https://github.com/javeshai/mytestmystique.git
+    - hugo
+
 deployment:
-  production:
+  master:
     branch: master
     commands:
-      - aws s3 sync mytestmystique/mydir/ s3://mytestmystique/ --delete
+      - aws s3 sync public/ s3://mytestmystique --delete
