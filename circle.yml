@@ -1,11 +1,5 @@
 deployment:
-  development:
-    branch: development
-    commands:
-      - npm run build
-      - aws s3 sync sync mydir/ s3://mytestmystique
-  production:
+  prod:
     branch: master
     commands:
-      - npm run build
-      - aws s3 sync sync mydir/ s3://mytestmystique
+      - aws s3 sync mydir/ s3://mytestmystique --delete
